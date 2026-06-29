@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -50,7 +51,41 @@ export default function RootLayout({ children }) {
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className={`${inter.className} min-h-full flex flex-col`}>{children}</body>
+      <body className={`${inter.className} min-h-full flex flex-col`}>
+        <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/90 backdrop-blur dark:border-zinc-800 dark:bg-black/90">
+          <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
+            <Link
+              href="/"
+              className="text-lg font-bold text-black dark:text-zinc-50"
+            >
+              Mi Sitio Optimizado
+            </Link>
+
+            <div className="flex items-center gap-6">
+              <Link
+                href="/"
+                className="text-sm font-medium text-zinc-600 transition hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+              >
+                Home
+              </Link>
+              <Link
+                href="/blog"
+                className="text-sm font-medium text-zinc-600 transition hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/contacto"
+                className="text-sm font-medium text-zinc-600 transition hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+              >
+                Contacto
+              </Link>
+            </div>
+          </nav>
+        </header>
+
+        {children}
+      </body>
     </html>
   );
 }
