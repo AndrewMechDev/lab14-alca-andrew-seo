@@ -6,6 +6,9 @@ export default async function robots() {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${BASE_URL}/sitemap.xml`,
+    sitemap: [
+      `${BASE_URL}/sitemap.xml`,
+      `${BASE_URL}/api/sitemap`,
+    ],
   };
 }

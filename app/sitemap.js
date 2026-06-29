@@ -1,7 +1,14 @@
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
+const blogPosts = [
+  { slug: "optimizar-imagenes-nextjs", updatedAt: "2026-06-29" },
+  { slug: "meta-tags-open-graph-seo", updatedAt: "2026-06-28" },
+  { slug: "sitemaps-dinamicos-indexacion", updatedAt: "2026-06-27" },
+  { slug: "lazy-loading-code-splitting", updatedAt: "2026-06-26" },
+];
+
 export default async function sitemap() {
-  return [
+  const staticRoutes = [
     {
       url: BASE_URL,
       lastModified: new Date(),
@@ -21,4 +28,13 @@ export default async function sitemap() {
       priority: 0.6,
     },
   ];
+
+  const blogRoutes = blogPosts.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    lastModified: post.updatedAt,
+    changeFrequency: "monthly",
+    priority: 0.5,
+  }));
+
+  return [...staticRoutes, ...blogRoutes];
 }
