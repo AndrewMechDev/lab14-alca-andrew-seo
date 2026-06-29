@@ -1,4 +1,9 @@
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const DynamicComponent = dynamic(
+  () => import("../components/LargeComponent")
+);
 
 export const metadata = {
   title: "Home",
@@ -25,6 +30,8 @@ export default function Home() {
           priority
           className="rounded-lg shadow-md"
         />
+
+        <DynamicComponent />
       </main>
     </div>
   );
